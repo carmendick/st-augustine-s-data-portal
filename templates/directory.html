@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="page-hero">
+
+<h1>
+
+Members Directory
+
+</h1>
+
+<p>
+
+Discover birthdays,
+celebrate members,
+and stay connected.
+
+</p>
+
+</div>
+
+
+
+<div class="filter-box">
+
+
+<form
+method="GET">
+
+<div class="row">
+
+
+<div class="col-md-4">
+
+<input
+name="state"
+placeholder="Filter by State">
+
+</div>
+
+
+<div class="col-md-4">
+
+<select
+name="status">
+
+<option value="">
+
+Relationship Status
+
+</option>
+
+<option>
+
+Single
+
+</option>
+
+<option>
+
+Married
+
+</option>
+
+<option value="Relationship">
+
+In Relationship
+
+</option>
+
+</select>
+
+</div>
+
+
+<div class="col-md-2">
+
+<label>
+
+<input
+type="checkbox"
+name="upcoming">
+
+Upcoming
+
+</label>
+
+</div>
+
+
+<div class="col-md-2">
+
+<button
+class="btn btn-primary w-100">
+
+Apply
+
+</button>
+
+</div>
+
+
+</div>
+
+</form>
+
+
+</div>
+
+
+
+<div class="row g-4">
+
+
+{% for m in members %}
+
+
+<div class="col-md-4 member">
+
+
+<div class="card member-card">
+
+
+{% if m.photo %}
+
+<img
+src="{{ m.photo.url }}">
+
+{% endif %}
+
+
+
+<div class="card-body">
+
+
+<div class="countdown">
+
+{% if m.days_left == 0 %}
+
+🎉 Today
+
+{% else %}
+
+🎂 {{ m.days_left }} Days
+
+{% endif %}
+
+</div>
+
+
+
+<div class="member-name">
+
+{{ m.full_name }}
+
+</div>
+
+
+<div class="member-meta">
+
+Birthday:
+{{ m.birthday }}
+
+<br>
+
+Origin:
+{{ m.state_origin }}
+
+<br>
+
+Residence:
+{{ m.state_residence }}
+
+<br>
+
+
+{% if m.show_phone %}
+
+📞 {{ m.phone }}
+
+{% else %}
+
+<span class="private">
+
+Phone Hidden
+
+</span>
+
+{% endif %}
+
+
+<br>
+
+
+{% if m.show_relationship %}
+
+💛
+{{ m.relationship_status }}
+
+{% else %}
+
+<span class="private">
+
+Relationship Private
+
+</span>
+
+{% endif %}
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+<div class="empty">
+
+No members found.
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+{% endblock %}

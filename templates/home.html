@@ -1,70 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="hero">
+
 <h1>
-🎂 Birthday Portal
+
+ST. AUGUSTINE
+
 </h1>
 
-<a href="/sign-up/">
+<p>
 
-Create Account
+Celebrate birthdays.
+Build community.
+Remember milestones.
+
+</p>
+
+<br>
+
+<a
+href="/sign-up/"
+class="btn btn-primary">
+
+Join Community
 
 </a>
 
+</div>
 
-######################################################
-<!-- <!DOCTYPE html>
 
-<html>
+<br><br>
 
-<head>
 
-<title>Register</title>
+<div class="row g-4">
 
-</head>
 
-<body>
+<div class="col-md-4">
 
-<h1>
-🎂 Birthday Registration
-</h1>
+<div class="card">
 
-<form method="POST">
+<div class="card-body">
 
-{% csrf_token %}
+<h3>
 
-{{ form.as_p }}
+🎂 Birthdays
 
-<button type="submit">
+</h3>
 
-Register
+<p>
 
-</button>
+Upcoming celebrations.
 
-</form>
+</p>
 
-</body>
+</div>
 
-</html> -->
+</div>
 
-###############################################
-<!-- <!DOCTYPE html>
+</div>
 
-<html>
 
-<head>
 
-<title>Birthday Portal</title>
+<div class="col-md-4">
 
-</head>
+<div class="card">
 
-<body>
+<div class="card-body">
 
-<h1>🎂 Birthday Portal</h1>
+<h3>
 
-<p>Welcome to my first Python full-stack website.</p>
+🕊 Arch Angels
 
-<button>
-Join
-</button>
+</h3>
 
-</body>
+<p>
 
-</html> -->
+Reflections and tradition.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>
+
+🙏 Community
+
+</h3>
+
+<p>
+
+Members and updates.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

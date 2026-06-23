@@ -2,9 +2,10 @@ from django.urls import path
 
 from .views import (
 home,
-signup
+signup,
+profile,
+directory
 )
-
 
 urlpatterns=[
 
@@ -20,7 +21,46 @@ signup,
 name='signup'
 ),
 
+path(
+'profile/',
+profile,
+name='profile'
+),
+
+path(
+'directory/',
+directory,
+name='directory'
+),
+
 ]
+
+
+
+####################################
+# from django.urls import path
+
+# from .views import (
+# home,
+# signup
+# )
+
+
+# urlpatterns=[
+
+# path(
+# '',
+# home,
+# name='home'
+# ),
+
+# path(
+# 'sign-up/',
+# signup,
+# name='signup'
+# ),
+
+# ]
 
 ######################################################
 

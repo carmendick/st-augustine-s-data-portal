@@ -32,6 +32,12 @@ class Member(models.Model):
         max_length=20
     )
 
+    photo = models.ImageField(
+    upload_to='profiles/',
+    blank=True,
+    null=True
+)
+
     birthday = models.DateField()
 
     state_origin = models.CharField(
