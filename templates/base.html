@@ -10,7 +10,8 @@
 
 <meta
 name="viewport"
-content="width=device-width">
+content="width=device-width, initial-scale=1">
+
 
 <title>
 
@@ -26,74 +27,171 @@ rel="stylesheet">
 
 <link
 rel="stylesheet"
-
 href="{% static 'css/style.css' %}">
 
 </head>
 
 
+
 <body>
 
 
-<!-- NAV -->
+<div class="app-shell">
 
-<nav
-class="navbar navbar-expand-lg">
 
-<div
-class="container">
+<!-- TOPBAR -->
 
-<a
-class="navbar-brand"
+<header class="topbar">
 
-href="/">
+
+<div class="brand">
 
 ✠ St. Augustine
 
-</a>
+</div>
 
 
-<div
-class="d-flex gap-3">
 
-<a
-href="/"
-
-class="btn btn-outline-light">
-
-Home
-
-</a>
+<div class="top-right">
 
 
-<a
-href="/directory/"
+{% if user.is_authenticated %}
 
-class="btn btn-primary">
 
-Directory
+<div class="notify">
 
-</a>
+🔔
 
 </div>
 
+
+
+<div class="profile-menu">
+
+
+<span>
+
+👤 {{ user.username }}
+
+</span>
+
+
+
+<div class="profile-dropdown">
+
+
+<a href="/profile/">
+
+Profile
+
+</a>
+
+
+<a href="/profile/">
+
+Privacy Settings
+
+</a>
+
+
+<form
+method="POST"
+action="/accounts/logout/">
+
+{% csrf_token %}
+
+
+<button
+class="logout-btn">
+
+Logout
+
+</button>
+
+
+</form>
+
+
 </div>
 
-</nav>
+
+</div>
+
+
+{% else %}
+
+
+<a href="/accounts/login/">
+
+Login
+
+</a>
+
+
+<a href="/sign-up/">
+
+Register
+
+</a>
+
+
+{% endif %}
+
+
+</div>
+
+
+</header>
 
 
 
-<!-- MOTHER DIV -->
 
-<div class="site-shell">
+<div class="workspace">
 
 
-<div class="page-shell">
+{% if user.is_authenticated %}
+
+
+<aside class="sidebar">
+
+
+<a href="/dashboard/">
+
+🏠 Dashboard
+
+</a>
+
+
+<a href="/directory/">
+
+👥 Members
+
+</a>
+
+
+<a href="/profile/">
+
+⚙ Profile
+
+</a>
+
+
+</aside>
+
+
+{% endif %}
+
+
+
+<main class="content">
 
 
 {% block content %}
 
 {% endblock %}
+
+
+</main>
 
 
 </div>

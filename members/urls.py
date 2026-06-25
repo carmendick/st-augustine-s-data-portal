@@ -1,40 +1,47 @@
 from django.urls import path
 
 from .views import (
-home,
-signup,
-profile,
-directory
+    home,
+    signup,
+    profile,
+    directory,
+    dashboard
 )
 
-urlpatterns=[
 
-path(
-'',
-home,
-name='home'
-),
+urlpatterns = [
 
-path(
-'sign-up/',
-signup,
-name='signup'
-),
+    path(
+        '',
+        home,
+        name='home'
+    ),
 
-path(
-'profile/',
-profile,
-name='profile'
-),
+    path(
+        'sign-up/',
+        signup,
+        name='signup'
+    ),
 
-path(
-'directory/',
-directory,
-name='directory'
-),
+    path(
+        'profile/',
+        profile,
+        name='profile'
+    ),
+
+    path(
+        'directory/',
+        directory,
+        name='directory'
+    ),
+
+    path(
+        'dashboard/',
+        dashboard,
+        name='dashboard'
+    ),
 
 ]
-
 
 
 ####################################

@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="page-header">
+
+<h1>
+
+Dashboard
+
+</h1>
+
+<p>
+
+Overview of members and birthdays
+
+</p>
+
+</div>
+
+
+
+<div class="stats-row">
+
+
+<div class="stat-card">
+
+<div class="stat-number">
+
+{{ total }}
+
+</div>
+
+<div>
+
+Members
+
+</div>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<div class="stat-number">
+
+{{ today }}
+
+</div>
+
+<div>
+
+Birthdays Today
+
+</div>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<div class="stat-number">
+
+{{ upcoming|length }}
+
+</div>
+
+<div>
+
+Upcoming
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="dashboard-grid">
+
+
+<div>
+
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>
+
+Upcoming Birthdays
+
+</h3>
+
+
+<br>
+
+
+{% for m in upcoming %}
+
+
+<div class="birthday-item">
+
+
+{% if m.photo %}
+
+<img
+src="{{ m.photo.url }}"
+class="profile-avatar">
+
+{% endif %}
+
+
+<div>
+
+<strong>
+
+{{ m.full_name }}
+
+</strong>
+
+<br>
+
+{{ m.days_left }}
+days left
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+No birthdays.
+
+{% endfor %}
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>
+
+Notifications
+
+</h3>
+
+<br>
+
+<p>
+
+No new notifications.
+
+</p>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>
+
+Quick Actions
+
+</h3>
+
+<br>
+
+<a
+href="/directory/">
+
+View Members
+
+</a>
+
+<br><br>
+
+<a
+href="/profile/">
+
+Edit Profile
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% endblock %}

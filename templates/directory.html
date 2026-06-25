@@ -3,19 +3,17 @@
 {% block content %}
 
 
-<div class="page-hero">
+<div class="page-header">
 
 <h1>
 
-Members Directory
+Member Directory
 
 </h1>
 
 <p>
 
-Discover birthdays,
-celebrate members,
-and stay connected.
+Browse the St. Augustine community
 
 </p>
 
@@ -23,197 +21,96 @@ and stay connected.
 
 
 
-<div class="filter-box">
+<div class="card search-panel">
+
+<div class="card-body">
 
 
-<form
-method="GET">
-
-<div class="row">
-
-
-<div class="col-md-4">
+<form method="GET">
 
 <input
-name="state"
-placeholder="Filter by State">
+type="text"
 
-</div>
+name="q"
 
+value="{{ query }}"
 
-<div class="col-md-4">
-
-<select
-name="status">
-
-<option value="">
-
-Relationship Status
-
-</option>
-
-<option>
-
-Single
-
-</option>
-
-<option>
-
-Married
-
-</option>
-
-<option value="Relationship">
-
-In Relationship
-
-</option>
-
-</select>
-
-</div>
+placeholder="Search name, phone, state, relationship...">
 
 
-<div class="col-md-2">
+<button>
 
-<label>
-
-<input
-type="checkbox"
-name="upcoming">
-
-Upcoming
-
-</label>
-
-</div>
-
-
-<div class="col-md-2">
-
-<button
-class="btn btn-primary w-100">
-
-Apply
+Search
 
 </button>
 
-</div>
-
-
-</div>
 
 </form>
 
 
 </div>
 
+</div>
 
 
-<div class="row g-4">
+
+<br>
 
 
-{% for m in members %}
+
+<div class="directory-grid">
 
 
-<div class="col-md-4 member">
+{% for member in members %}
 
 
 <div class="card member-card">
 
 
-{% if m.photo %}
-
-<img
-src="{{ m.photo.url }}">
-
-{% endif %}
-
-
-
 <div class="card-body">
 
 
-<div class="countdown">
+{% if member.photo %}
 
-{% if m.days_left == 0 %}
-
-🎉 Today
-
-{% else %}
-
-🎂 {{ m.days_left }} Days
-
-{% endif %}
-
-</div>
-
-
-
-<div class="member-name">
-
-{{ m.full_name }}
-
-</div>
-
-
-<div class="member-meta">
-
-Birthday:
-{{ m.birthday }}
-
-<br>
-
-Origin:
-{{ m.state_origin }}
-
-<br>
-
-Residence:
-{{ m.state_residence }}
-
-<br>
-
-
-{% if m.show_phone %}
-
-📞 {{ m.phone }}
-
-{% else %}
-
-<span class="private">
-
-Phone Hidden
-
-</span>
+<img
+src="{{ member.photo.url }}"
+class="member-avatar">
 
 {% endif %}
 
 
-<br>
+<h4>
+
+{{ member.full_name }}
+
+</h4>
 
 
-{% if m.show_relationship %}
+<p>
 
-💛
-{{ m.relationship_status }}
+{{ member.state_residence }}
 
-{% else %}
+</p>
 
-<span class="private">
 
-Relationship Private
+{% if member.show_relationship %}
 
-</span>
+<p>
+
+{{ member.relationship_status }}
+
+</p>
 
 {% endif %}
 
 
-</div>
 
+<a
+href="/profile/">
 
-</div>
+Open Profile
+
+</a>
 
 
 </div>
@@ -225,9 +122,13 @@ Relationship Private
 {% empty %}
 
 
-<div class="empty">
+<div class="card">
+
+<div class="card-body">
 
 No members found.
+
+</div>
 
 </div>
 

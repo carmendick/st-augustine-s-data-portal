@@ -22,6 +22,15 @@ include(
 ),
 
 path(
+'accounts/',
+
+include(
+'django.contrib.auth.urls'
+)
+
+),
+
+path(
 'login/',
 views.LoginView.as_view(
 template_name='login.html'
