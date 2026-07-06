@@ -1,4 +1,17 @@
+
+
+
+
+
 {% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/layout.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/directory.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 
 <!DOCTYPE html>
 
@@ -34,6 +47,10 @@ rel="stylesheet">
 rel="stylesheet"
 href="{% static 'css/style.css' %}">
 
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@fluentui/font-icons-mdl2@8.5.32/css/fabric-icons.css">
+
 </head>
 
 
@@ -48,187 +65,254 @@ href="{% static 'css/style.css' %}">
 
 <header class="topbar">
 
+    <!-- LEFT -->
 
-<div class="brand">
+    <div class="brand">
 
+        <img
+        src="{% static 'images/logo.png' %}"
+        class="nav-logo">
 
-<img
-src="{% static 'images/logo.png' %}"
-class="nav-logo">
+        <div>
 
+            <h3>St. Augustine</h3>
 
-<div>
+            <span>Community Portal</span>
 
+        </div>
 
-<h3>
+    </div>
 
-St. Augustine
 
-</h3>
 
+    <!-- CENTER -->
 
-<span>
+    <div class="search-bar">
 
-Community Portal
+        <i class="ms-Icon ms-Icon--Search"></i>
 
-</span>
+        <input
+        type="text"
+        placeholder="Search members, birthdays, states...">
 
+    </div>
 
-</div>
 
 
-</div>
+    <!-- RIGHT -->
 
+    <div class="top-right">
 
+        {% if user.is_authenticated %}
 
-<div class="top-right">
+            <div class="notify">
 
+                <i class="ms-Icon ms-Icon--Ringer"></i>
 
-{% if user.is_authenticated %}
+            </div>
 
+            <div class="profile-menu">
 
-<div class="notify">
+                <span>
 
-🔔
+                    <i class="ms-Icon ms-Icon--Contact"></i>
 
-</div>
+                    {{ user.username }}
 
+                </span>
 
+                <div class="profile-dropdown">
 
-<div class="profile-menu">
+                    <a href="/profile/">
 
+                        Profile
 
-<span>
+                    </a>
 
-👤 {{ user.username }}
+                    <a href="/profile/">
 
-</span>
+                        Privacy Settings
 
+                    </a>
 
+                    <form
+                    method="POST" enctype="multipart/form-data"
+                    action="/accounts/logout/">
 
-<div class="profile-dropdown">
+                        {% csrf_token %}
 
+                        <button class="logout-btn">
 
-<a href="/profile/">
+                            Logout
 
-Profile
+                        </button>
 
-</a>
+                    </form>
 
+                </div>
 
-<a href="/profile/">
+            </div>
 
-Privacy Settings
+        {% else %}
 
-</a>
+            <a href="/accounts/login/">
 
+                Login
 
-<form
-method="POST"
-action="/accounts/logout/">
+            </a>
 
-{% csrf_token %}
+            <a href="/sign-up/">
 
+                Register
 
-<button
-class="logout-btn">
+            </a>
 
-Logout
+        {% endif %}
 
-</button>
-
-
-</form>
-
-
-</div>
-
-
-</div>
-
-
-{% else %}
-
-
-<a href="/accounts/login/">
-
-Login
-
-</a>
-
-
-<a href="/sign-up/">
-
-Register
-
-</a>
-
-
-{% endif %}
-
-
-</div>
-
+    </div>
 
 </header>
 
 
 
-
 <div class="workspace">
-
 
 {% if user.is_authenticated %}
 
+<nav class="left-panel">
 
-<aside class="sidebar">
+<a href="/dashboard/" class="nav-item">
 
+<i class="ms-Icon ms-Icon--Home"></i>
 
-<a href="/dashboard/">
-
-🏠 Dashboard
-
-</a>
-
-
-<a href="/directory/">
-
-👥 Members
+<span>Dashboard</span>
 
 </a>
 
+<a href="/directory/" class="nav-item">
+
+<i class="ms-Icon ms-Icon--People"></i>
+
+<span>Members</span>
+
+</a>
+
+<a href="#">
+
+<i class="ms-Icon ms-Icon--Calendar"></i>
+
+<span>Calendar</span>
+
+</a>
+
+<a href="#">
+
+<i class="ms-Icon ms-Icon--ReminderPerson"></i>
+
+<span>Birthdays</span>
+
+</a>
+
+<a href="/notifications/">
+
+<i class="ms-Icon ms-Icon--Ringer"></i>
+
+<span>Notifications</span>
+
+</a>
 
 <a href="/profile/">
 
-⚙ Profile
+<i class="ms-Icon ms-Icon--Contact"></i>
+
+<span>Profile</span>
 
 </a>
 
+<a href="#">
 
-</aside>
+<i class="ms-Icon ms-Icon--Settings"></i>
 
+<span>Settings</span>
+
+</a>
+
+</nav>
 
 {% endif %}
 
-
-
-<main class="content">
-
+<main class="main-panel">
 
 {% block content %}
 
 {% endblock %}
 
-
 </main>
 
+{% if user.is_authenticated %}
+
+<aside class="right-panel">
+
+<div class="widget">
+
+<h3>
+
+Upcoming Birthdays
+
+</h3>
+
+<p>
+
+No birthdays today.
+
+</p>
+
+</div>
+
+<div class="widget">
+
+<h3>
+
+Saint of the Day
+
+</h3>
+
+<p>
+
+Coming soon.
+
+</p>
+
+</div>
+
+<div class="widget">
+
+<h3>
+
+Announcements
+
+</h3>
+
+<p>
+
+No announcements.
+
+</p>
+
+</div>
+
+</aside>
+
+{% endif %}
 
 </div>
 
 
 </div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
 
 
 </body>
 
-</html>
+</html> 

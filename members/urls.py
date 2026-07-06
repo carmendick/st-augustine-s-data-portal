@@ -5,9 +5,9 @@ from .views import (
     signup,
     profile,
     directory,
-    dashboard
+    dashboard,
+    notifications,
 )
-
 
 urlpatterns = [
 
@@ -39,6 +39,12 @@ urlpatterns = [
         'dashboard/',
         dashboard,
         name='dashboard'
+    ),
+
+    path(
+        'notifications/',
+        notifications,
+        name='notifications'
     ),
 
 ]

@@ -1,0 +1,147 @@
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+}
+
+.card-header{
+
+    padding:18px 24px;
+
+    border-bottom:1px solid var(--border);
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.card-body{
+
+    padding:24px;
+
+}
+
+.card-footer{
+
+    padding:18px 24px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.btn-outline{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+.btn-outline:hover{
+
+    background:#F8FAFD;
+
+}
+
+
+/* ===========================
+   BADGES
+=========================== */
+
+.badge{
+
+    display:inline-block;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.badge-success{
+
+    background:#EAF8EE;
+
+    color:#14803C;
+
+}
+
+.badge-warning{
+
+    background:#FFF7E6;
+
+    color:#B45309;
+
+}
+
+.badge-danger{
+
+    background:#FEECEC;
+
+    color:#B42318;
+
+}

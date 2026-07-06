@@ -21,162 +21,164 @@ Overview of members and birthdays
 
 
 
-<div class="stats-row">
-
-
-<div class="stat-card">
-
-<div class="stat-number">
-
-{{ total }}
-
-</div>
-
-<div>
-
-Members
-
-</div>
-
-</div>
-
-
+<div class="stats-grid">
 
 <div class="stat-card">
 
-<div class="stat-number">
+<h2>
 
-{{ today }}
+{{ total_members }}
 
-</div>
-
-<div>
-
-Birthdays Today
-
-</div>
-
-</div>
-
-
-
-<div class="stat-card">
-
-<div class="stat-number">
-
-{{ upcoming|length }}
-
-</div>
-
-<div>
-
-Upcoming
-
-</div>
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="dashboard-grid">
-
-
-<div>
-
-
-<div class="card">
-
-<div class="card-body">
-
-<h3>
-
-Upcoming Birthdays
-
-</h3>
-
-
-<br>
-
-
-{% for m in upcoming %}
-
-
-<div class="birthday-item">
-
-
-{% if m.photo %}
-
-<img
-src="{{ m.photo.url }}"
-class="profile-avatar">
-
-{% endif %}
-
-
-<div>
-
-<strong>
-
-{{ m.full_name }}
-
-</strong>
-
-<br>
-
-{{ m.days_left }}
-days left
-
-
-</div>
-
-
-</div>
-
-
-{% empty %}
-
-No birthdays.
-
-{% endfor %}
-
-
-</div>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<div class="card">
-
-<div class="card-body">
-
-<h3>
-
-Notifications
-
-</h3>
-
-<br>
+</h2>
 
 <p>
 
-No new notifications.
+Members
 
 </p>
 
 </div>
+
+
+
+<div class="stat-card">
+
+<h2>
+
+{{ upcoming_birthdays }}
+
+</h2>
+
+<p>
+
+Birthdays Soon
+
+</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h2>
+
+{{ states_count }}
+
+</h2>
+
+<p>
+
+States Represented
+
+</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h2>
+
+{{ user.username }}
+
+</h2>
+
+<p>
+
+Welcome Back
+
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<div>
+
+
+<div class="dashboard-grid">
+
+    <section class="panel">
+
+        <h3>
+
+            Upcoming Birthdays
+
+        </h3>
+
+        <br>
+
+        {% if upcoming %}
+
+            {% for member in upcoming %}
+
+                <div class="birthday-item">
+
+                    <strong>
+
+                        {{ member.full_name }}
+
+                    </strong>
+
+                    <span>
+
+                        {{ member.days_left }} day(s)
+
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+
+                No upcoming birthdays.
+
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+
+    <section class="panel">
+
+        <h3>
+
+            Quick Actions
+
+        </h3>
+
+        <br>
+
+        <a class="action-btn" href="/directory/">
+
+            View Member Directory
+
+        </a>
+
+        <a class="action-btn" href="/profile/">
+
+            Edit My Profile
+
+        </a>
+
+        <a class="action-btn" href="/sign-up/">
+
+            Register Member
+
+        </a>
+
+    </section>
 
 </div>
 

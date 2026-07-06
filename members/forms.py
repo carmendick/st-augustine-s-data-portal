@@ -41,26 +41,16 @@ class ProfileForm(
         model = Member
 
         fields = [
-
-            'full_name',
-
-            'phone',
-
-            'birthday',
-
-            'state_origin',
-
-            'state_residence',
-
-            'relationship_status',
-
-            'show_phone',
-
-            'show_relationship',
-            
-            'photo'
-
-        ]
+            "photo",
+            "full_name",
+            "phone",
+            "birthday",
+            "state_origin",
+            "state_residence",
+            "relationship_status",
+            "show_phone",
+            "show_relationship",
+]
 
 
 ###########################################

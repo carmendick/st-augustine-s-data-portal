@@ -17,12 +17,18 @@ ProfileForm
 )
 
 from .models import (
-Member
+Member, Notification
 )
 
 from datetime import (
 date
 )
+
+from datetime import date
+
+from django.db.models import Count
+
+
 
 @login_required
 def directory(request):
@@ -238,6 +244,18 @@ def signup(request):
 
         form = SignUpForm()
 
+    Notification.objects.create(
+
+    recipient=user,
+
+    title="Welcome!",
+
+    message="Welcome to the St. Augustine Community Portal. We're delighted to have you with us.",
+
+    notification_type="system"
+
+)
+
     return render(
         request,
         'signup.html',
@@ -311,68 +329,91 @@ instance=member
 @login_required
 def dashboard(request):
 
-    members = (
-        Member.objects.all()
-    )
+    members = Member.objects.all()
 
-    total = (
-        members.count()
-    )
+    today = date.today()
 
-    today = (
-        date.today()
-    )
+    total_members = members.count()
 
     upcoming = []
 
+    states = set()
+
     for m in members:
 
-        next_day = (
+        # Count unique states
+        if m.state_residence:
 
-            m.birthday.replace(
-                year=today.year
-            )
+            states.add(
+                m.state_residence
+    )
 
+        next_day = m.birthday.replace(
+            year=today.year
         )
 
         if next_day < today:
 
-            next_day = (
-
-                next_day.replace(
-                    year=today.year+1
-                )
-
+            next_day = next_day.replace(
+                year=today.year + 1
             )
 
         m.days_left = (
-            next_day
-            -
+            next_day -
             today
         ).days
 
         if m.days_left <= 30:
 
-            upcoming.append(
-                m
-            )
+            upcoming.append(m)
+
+        
 
     upcoming.sort(
-        key=lambda x:
-        x.days_left
+        key=lambda x: x.days_left
+    )
+
+    context = {
+
+        "total_members": total_members,
+
+        "upcoming_birthdays": len(upcoming),
+
+        "states_count": len(states),
+
+        "upcoming": upcoming[:6],
+
+    }
+
+    return render(
+
+        request,
+
+        "dashboard.html",
+
+        context
+
+    )
+
+
+@login_required
+def notifications(request):
+
+    notifications = Notification.objects.filter(
+
+        recipient=request.user
+
     )
 
     return render(
 
         request,
 
-        'dashboard.html',
+        "notifications.html",
 
         {
 
-            'total':total,
-
-            'upcoming':upcoming[:6]
+            "notifications": notifications
 
         }
 
