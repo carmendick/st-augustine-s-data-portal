@@ -1,0 +1,195 @@
+body{
+
+margin:0;
+
+font-family:
+"Segoe UI",
+sans-serif;
+
+background:#f3f2f1;
+
+}
+
+.auth-wrapper{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+min-height:100vh;
+
+}
+
+.auth-left{
+
+background:#0F6CBD;
+
+color:white;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+padding:60px;
+
+text-align:center;
+
+}
+
+.auth-logo{
+
+width:100px;
+
+margin-bottom:30px;
+
+}
+
+.auth-left h1{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+}
+
+.auth-left p{
+
+font-size:18px;
+
+opacity:.9;
+
+}
+
+.auth-left blockquote{
+
+margin-top:50px;
+
+font-style:italic;
+
+line-height:1.8;
+
+}
+
+.auth-right{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+}
+
+.auth-card{
+
+background:white;
+
+padding:50px;
+
+border-radius:20px;
+
+width:100%;
+
+max-width:480px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.form-group{
+
+margin-bottom:22px;
+
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
+
+.form-group input{
+
+width:100%;
+
+padding:14px;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+font-size:15px;
+
+box-sizing:border-box;
+
+}
+
+.auth-btn{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+background:#0F6CBD;
+
+color:white;
+
+font-size:16px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.auth-btn:hover{
+
+background:#115EA3;
+
+}
+
+.auth-footer{
+
+margin-top:25px;
+
+text-align:center;
+
+}
+
+@media (max-width: 900px){
+
+    .auth-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .auth-left{
+
+        display:none;
+
+    }
+
+    .auth-card{
+
+        max-width:100%;
+
+        margin:20px;
+
+    }
+
+}

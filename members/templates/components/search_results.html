@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "components/page_header.html"
+with
+title="Search Results"
+subtitle=query %}
+
+<div class="directory-grid">
+
+{% for member in members %}
+
+    {% include "components/member_card.html" %}
+
+{% empty %}
+
+    {% include "components/empty_state.html"
+
+    with
+
+    title="Nothing Found"
+
+    message="Try another search." %}
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

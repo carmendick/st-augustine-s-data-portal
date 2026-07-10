@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="profile-header">
+
+    <div class="profile-left">
+
+        {% if member.photo %}
+
+            <img
+            src="{{ member.photo.url }}"
+            class="profile-photo">
+
+        {% else %}
+
+            <div class="profile-avatar">
+
+                {{ member.full_name|slice:":1" }}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="profile-info">
+
+        <h1>
+
+            {{ member.full_name }}
+
+        </h1>
+
+        <p>
+
+            {{ member.state_residence }}
+
+        </p>
+
+        <p>
+
+            {{ member.relationship_status }}
+
+        </p>
+
+    </div>
+
+</div>
+
+<div class="profile-grid">
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <h3>
+
+                Contact Information
+
+            </h3>
+
+            <hr>
+
+            <p>
+
+                📞 {{ member.phone }}
+
+            </p>
+
+            <p>
+
+                📧 {{ member.email }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <h3>
+
+                Birthday
+
+            </h3>
+
+            <hr>
+
+            <p>
+
+                {{ member.birthday }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

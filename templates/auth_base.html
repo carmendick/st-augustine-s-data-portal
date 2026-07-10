@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+{% block title %}
+
+St. Augustine Portal
+
+{% endblock %}
+
+</title>
+
+<link
+rel="stylesheet"
+href="{% static 'css/auth.css' %}">
+
+<link
+rel="icon"
+href="{% static 'images/favicon.png' %}">
+
+</head>
+
+<body>
+
+<div class="auth-wrapper">
+
+    <!-- LEFT SIDE -->
+
+    <div class="auth-left">
+
+        <img
+        src="{% static 'images/logo.png' %}"
+        class="auth-logo">
+
+        <h1>
+
+            St. Augustine
+
+        </h1>
+
+        <h3>
+
+            Community Portal
+
+        </h3>
+
+        <p>
+
+            Faith • Fellowship • Service
+
+        </p>
+
+        <blockquote>
+
+            “Our hearts are restless until they rest in You.”
+
+            <br>
+
+            — St. Augustine
+
+        </blockquote>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="auth-right">
+
+        <div class="auth-card">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

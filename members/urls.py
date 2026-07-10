@@ -1,12 +1,15 @@
 from django.urls import path
 
+from .views.system import notifications
+
+from .views.member import directory, profile
+
+from .views.search import search
+
 from .views import (
     home,
     signup,
-    profile,
-    directory,
     dashboard,
-    notifications,
 )
 
 urlpatterns = [
@@ -47,6 +50,17 @@ urlpatterns = [
         name='notifications'
     ),
 
+    path(
+        "search/",
+        search,
+        name="search"
+),
+
+    path(
+    "members/",
+    member_profile,
+    name="member_profile"
+),
 ]
 
 

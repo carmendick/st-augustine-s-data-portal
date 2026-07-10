@@ -1,0 +1,41 @@
+<div class="card member-card">
+
+    <div class="card-body">
+
+        {% if member.photo %}
+
+            <img
+            src="{{ member.photo.url }}"
+            class="member-avatar">
+
+        {% else %}
+
+            <div class="avatar-placeholder">
+
+                {{ member.full_name|slice:":1" }}
+
+            </div>
+
+        {% endif %}
+
+        <h4>
+
+            {{ member.full_name }}
+
+        </h4>
+
+        <p>
+
+            {{ member.state_residence }}
+
+        </p>
+
+        <p>
+
+            {{ member.relationship_status }}
+
+        </p>
+
+    </div>
+
+</div>

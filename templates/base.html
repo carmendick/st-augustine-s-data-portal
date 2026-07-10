@@ -51,6 +51,10 @@ href="{% static 'css/style.css' %}">
 rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/@fluentui/font-icons-mdl2@8.5.32/css/fabric-icons.css">
 
+<link
+rel="stylesheet"
+href="{% static 'css/profile.css' %}">
+
 </head>
 
 
@@ -87,15 +91,22 @@ href="https://cdn.jsdelivr.net/npm/@fluentui/font-icons-mdl2@8.5.32/css/fabric-i
 
     <!-- CENTER -->
 
-    <div class="search-bar">
+   <form
+class="search-bar"
+action="{% url 'search' %}"
+method="GET">
 
-        <i class="ms-Icon ms-Icon--Search"></i>
+    <i class="ms-Icon ms-Icon--Search"></i>
 
-        <input
-        type="text"
-        placeholder="Search members, birthdays, states...">
+    <input
+        type="search"
+        name="q"
+        value="{{ request.GET.q }}"
+        placeholder="Search members, states, phone..."
 
-    </div>
+        autocomplete="off">
+
+</form>
 
 
 
