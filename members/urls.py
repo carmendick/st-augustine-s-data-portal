@@ -6,10 +6,13 @@ from .views.member import directory, profile
 
 from .views.search import search
 
+from .views import member_profile
+
 from .views import (
     home,
     signup,
     dashboard,
+    member_profile,
 )
 
 urlpatterns = [
@@ -57,10 +60,10 @@ urlpatterns = [
 ),
 
     path(
-    "members/",
+    "members/<int:pk>/",
     member_profile,
     name="member_profile"
-),
+)
 ]
 
 

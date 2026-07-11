@@ -1,26 +1,28 @@
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from members.models import Notification
 
 
-def create_notification(
+@login_required
+def notifications(request):
 
-    recipient,
+    notifications = Notification.objects.filter(
 
-    title,
+        recipient=request.user
 
-    message,
+    ).order_by("-created")
 
-    notification_type="system"
+    return render(
 
-):
+        request,
 
-    Notification.objects.create(
+        "notifications.html",
 
-        recipient=recipient,
+        {
 
-        title=title,
+            "notifications": notifications
 
-        message=message,
-
-        notification_type=notification_type
+        }
 
     )
